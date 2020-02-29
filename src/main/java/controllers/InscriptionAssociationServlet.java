@@ -32,6 +32,9 @@ public class InscriptionAssociationServlet extends HttpServlet {
     @Inject
     DataSources ds;
     
+    @Inject
+    ParentDAO parentDAO;
+    
     
 //    @Resource(lookup = "java:app/env/jdbc/sanaa")
 //    DataSource data;
@@ -62,7 +65,7 @@ public class InscriptionAssociationServlet extends HttpServlet {
             
             DataSource data = ds.getDataSource();
             conn = data.getConnection();
-            ParentDAO parentDAO = new ParentDAO(conn);
+//            ParentDAO parentDAO = new ParentDAO(conn);
             
             Parent parent = getParentFromRequest(request);
             

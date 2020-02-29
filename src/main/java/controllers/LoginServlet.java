@@ -30,6 +30,9 @@ public class LoginServlet extends HttpServlet {
     
     @Inject
     DataSources ds;
+    
+    @Inject
+    ParentDAO parentDAO;
 //    
 //    @Resource(lookup = "java:app/env/jdbc/sanaa")
 //    DataSource data;
@@ -57,7 +60,7 @@ public class LoginServlet extends HttpServlet {
         DataSource data = ds.getDataSource();
         try {
             Connection conn = data.getConnection();
-            ParentDAO parentDAO = new ParentDAO(conn);
+//            ParentDAO parentDAO = new ParentDAO(conn);
             
             
             String email = request.getParameter("email");

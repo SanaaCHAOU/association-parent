@@ -22,7 +22,8 @@ import javax.sql.DataSource;
         databaseName = "association",
         user = "sanaa",
         password = "sanaa",
-        url="jdbc:derby://localhost:1527/association")
+        url="jdbc:derby://localhost:1527/association") // => DataSource : un objet qui créer plusieurs
+         //connexion à la base de données spécifiée et permet la réutilisation de ces connexion
 
 @Startup // On demande au conteneur (serveur) de créer une instance au démarrage (startup) de l'application de
         // cette classe (DataSouces)

@@ -32,6 +32,7 @@
                 </div>
                 <input type="submit" value="Connecter"/>
             </form>
+            <a href="/association-parent/inscription">Inscription</a>
         </div>
     </body>
 </html>
