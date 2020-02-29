@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/association-parent">
+    <Resource name="app/env/datasource/sanaa" auth="Container"
+        type="org.apache.derby.jdbc.ClientDataSource"
+        maxActive="100" maxIdle="30" maxWait="10000"
+        username="sanaa"
+        password="sanaa"
+        driverClassName="corg.apache.derby.jdbc.ClientDriver"
+        url="jdbc:derby://localhost:1527/association_parent"/>    
+</Context>
