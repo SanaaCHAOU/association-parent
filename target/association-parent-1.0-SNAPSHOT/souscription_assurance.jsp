@@ -11,100 +11,132 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Jekyll v3.8.6">
+        <title>Souscription</title>
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/checkout/">
+
+        <!-- Bootstrap core CSS -->
+        <link href="https://getbootstrap.com/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
+        <!-- Custom styles for this template -->
+        <link href="https://getbootstrap.com/docs/4.4/examples/checkout/form-validation.css" rel="stylesheet">
+ 
     </head>
-    <body style="width: 50%; margin: 0 auto;">
-        <jsp:useBean id="user" type="Parent" scope="session" />
-        <h1>Veuillez remplir le formulaire:</h1>
-        <form action="/association-parent/souscription" method="POST">
-            <div id="form-inscr">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td colspan = "2"> <h4> Informations du tuteur </h4> </td>
-                        </tr>
-                        <tr>
-                            <td>Nom tuteur <span style="color: red">*</span>:</td>
-                            <td><input type="text" name="nom_parent_1" value="<%=user.getNom()%>" /></td>
-                        </tr>
-                        <tr>
-                            <td>Prénom tuteur <span style="color: red">*</span>:</td>
-                            <td><input type="text" name="prenom_parent_1" value="<%=user.getPrenom()%>" /></td>
-                        </tr>
-                        <tr>
-                            <td>Email <span style="color: red">*</span>:</td>
-                            <td><input type="text" name="email_parent_1" value="<%=user.getEmail()%>" /></td>
-                        </tr>   
-                        <tr>
-                            <td>Téléphone <span style="color: red">*</span>:</td>
-                            <td><input type="text" name="telephone_parent_1" value="<%=user.getTelephone()%>" /></td>
-                        </tr>  
-<!--                        <tr>
-                            <td colspan = "2"> <h4> Informations du parent facultatif </h4> </td>
-                        </tr>
-                        <tr>
-                            <td>Nom Parent</td>
-                            <td><input type="text" name="nom_parent_2" value="" /></td>
-                        </tr>
-                        <tr>
-                            <td>Prénom tuteur :</td>
-                            <td><input type="text" name="prenom_parent_2" value="" /></td>
-                        </tr>
-                        <tr>
-                            <td>Email :</td>
-                            <td><input type="text" name="email_parent_2" value="" /></td>
-                        </tr>   
-                        <tr>
-                            <td> Téléphone :</td>
-                            <td><input type="text" name="telephone_parent_2" value="" /></td>
-                        </tr>  -->
-                    </tbody>
-                </table>
-                <table>
-                    <h4>Enfant 1</h4>
-                        <tr>
-                            <td>Nom :</td>
-                            <td><input type="text" name="nom_enfant_1" value="" /></td>
-                        </tr>
-                         <tr>
-                            <td>Prénom :</td>
-                            <td><input type="text" name="prenom_enfant_1" value="" /></td>
-                        </tr>
-                        <tr>
-                            <td>Niveau :</td>
-                            <td>           
-                                <select name="niveau">
-                                  <option value="primaire">Primaire</option>
-                                  <option value="college">collège</option>
-                                  <option value="lycee">Lycée</option>
-                                </select>
-                            </td>
-                        </tr>
-                </table>
-                <div>
-                    <label for="lmde_enfant_1">LMDE</label>
-                    <input type="radio" name="assurance_enfant_1" id="lmde_enfant_1"/>
-                    <label for="vitavi_enfant_1">Vitavi</label>
-                    <input type="radio" name="assurance_enfant_1" id="vitavi_enfant_1"/>
-                </div>
-                <div>     
-                    <input type="checkbox" name="accepter_conditions" id="accepter_conditions" required/>
-                    <label for="accepter_conditions">J’ai lu et accepte les garanties du contrat d’assurance</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="recevoir_informations" id="recevoir_informations"/>
-                    <label for="recevoir_informations">Je souhaite recevoir les informations concernant l’association</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="etre_parent_delegue" id="etre_parent_delegue" />
-                    <label for="etre_parent_delegue">Je souhaite être parents délégués au conseil d’école</label>
-                </div>
+    
+    <body class="bg-light">
+        <div class="container">
+            <jsp:useBean id="user" type="Parent" scope="session" />
+            <div class="py-5 text-center">
+                <h2>Veuillez remplir le formulaire:</h2>
             </div>
-            <button onclick="ajouterEnfant(event)">Ajouter Enfant</button>
-            <input type="number" hidden="true" name="nombre_enfant" value="1" id="nb-enfant"/>
-            
-            <input type="submit" value="Envoyer" id="submit"/>
-        </form>
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3">Informations du tuteur</h4>
+                <form class="needs-validation" action="/association-parent/souscription" method="POST" novalidate>
+                    <div  id="form-inscr">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName">Nom tuteur <span class="text-muted">(Obligatoire)</span></label>
+                                <input type="text" name="nom_parent_1" class="form-control" id="firstName" placeholder="" value="<%=user.getNom()%>" required>
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Prénom tuteur <span class="text-muted">(Obligatoire)</span></label>
+                                <input type="text" name="prenom_parent_1" class="form-control" id="lastName" placeholder="" value="<%=user.getPrenom()%>" required>
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="telephone">Téléphone <span class="text-muted">(Obligatoire)</span></label>
+                            <input type="text" name="telephone_parent_1" value="<%=user.getTelephone()%>" class="form-control" id="phone" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid phone number.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email">Email <span class="text-muted">(Obligatoire)</span></label>
+                            <input type="email" name="email_parent_1" class="form-control" id="email" placeholder="nom.prenom@example.com" value="<%=user.getEmail()%>"  required>
+                            <div class="invalid-feedback">
+                                Please enter a valid email address.
+                            </div>
+                        </div>
+
+                        <table>
+                            <h5>Enfant 1</h5>
+                            <label for="nom">Nom</label>
+                            <input type="text" class="form-control" name="nom_enfant_1" id="nom" value="" />
+                            <label for="prenom">Prénom</label>
+                            <input type="text" class="form-control" name="prenom_enfant_1" id="prenom" value="" />
+                            <label for="niveau">Niveau</label>         
+                            <select  name="niveau_enfant_1"  class="custom-select d-block w-100" id="niveau">
+                                <option value="PRIMAIRE">Primaire</option>
+                                <option value="COLLEGE">collège</option>
+                                <option value="LYCEE">Lycée</option>
+                            </select>
+
+                            <div class="d-block my-3">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" name="assurance_enfant_1"  value="LMDE" id="lmde_enfant_1" class="custom-control-input"/>
+                                    <label class="custom-control-label" for="lmde_enfant_1">LMDE</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" name="assurance_enfant_1"  value="VITAVI" id="vitavi_enfant_1" class="custom-control-input">
+                                    <label class="custom-control-label" for="vitavi_enfant_1">VITAVI</label>
+                                </div>
+                            </div>
+                        </table>
+
+                      
+                    </div>
+                           <hr class="mb-4">
+                        <div class="d-block my-3">
+                            <div class="custom-control custom-checkbox">     
+                                <input class="custom-control-input"  type="checkbox" name="accepter_conditions" id="accepter_conditions" required/>
+                                <label class="custom-control-label" for="accepter_conditions">J’ai lu et accepte les garanties du contrat d’assurance</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" name="recevoir_informations" id="recevoir_informations"/>
+                                <label class="custom-control-label" for="recevoir_informations">Je souhaite recevoir les informations concernant l’association</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" name="etre_parent_delegue" id="etre_parent_delegue" />
+                                <label class="custom-control-label" for="etre_parent_delegue">Je souhaite être parents délégués au conseil d’école</label>
+                            </div>
+                        </div>
+                    <div>
+                        <button class="btn btn-primary btn-lg" onclick="ajouterEnfant(event)">Ajouter Enfant</button>
+                        <input type="number" hidden="true" name="nombre_enfant" value="1" id="nb-enfant"/>
+                        <input class="btn btn-primary btn-lg" type="submit" value="Envoyer" id="submit"/>
+                    </div>
+                </form>
+
+        </div>
         
         <script>
             var div = document.getElementById('form-inscr');
@@ -132,22 +164,22 @@
                 let niveauSelect = document.createElement('select');
                 let niveauOptionPrimaire = document.createElement('option');
                 niveauOptionPrimaire.innerText = "Primaire";
-                niveauOptionPrimaire.value = "primaire"
+                niveauOptionPrimaire.value = "PRIMAIRE"
                 let niveauOptionCollege = document.createElement('option');
                 niveauOptionCollege.innerText = "Collège";
-                niveauOptionCollege.value = "college";
+                niveauOptionCollege.value = "COLLEGE";
                 let niveauOptionLycee = document.createElement('option');
                 niveauOptionLycee.innerText = "Lycée"
-                niveauOptionLycee.value = "lycee";
+                niveauOptionLycee.value = "LYCEE";
                 niveauSelect.name = "niveau_enfant_" + nombreEnfant;
                 niveauSelect.type = "text";
                 
                 let assuranceDiv = document.createElement('div');
                 assuranceDiv.innerHTML = `
                     <label for="lmde_enfant_`+ nombreEnfant +`">LMDE</label>
-                    <input type="radio" name="assurance_enfant_` + nombreEnfant +`" id="lmde_enfant_`+ nombreEnfant +`"/>
+                    <input type="radio" name="assurance_enfant_` + nombreEnfant +`" value="LMDE" id="lmde_enfant_`+ nombreEnfant +`"/>
                     <label for="vitavi_enfant_`+ nombreEnfant +`">Vitavi</label>
-                    <input type="radio" name="assurance_enfant_`+ nombreEnfant +`" id="vitavi_enfant_`+ nombreEnfant +`"/>
+                    <input type="radio" name="assurance_enfant_`+ nombreEnfant +`" value="VITAVI" id="vitavi_enfant_`+ nombreEnfant +`"/>
                 `;
                 
                 niveauSelect.appendChild(niveauOptionPrimaire);
@@ -191,6 +223,16 @@
                 return tr;
             }
         </script>
+        
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+                <p class="mb-1">&copy; 2019-2020 </p>
+        </footer>
+        
+     </div>
+        
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="https://getbootstrap.com/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+        <script src="https://getbootstrap.com/docs/4.4/examples/checkout/form-validation.js"></script>
     </body>
 </html>
 

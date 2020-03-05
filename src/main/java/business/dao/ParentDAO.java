@@ -7,26 +7,45 @@ package business.dao;
 
 import business.Adhesion;
 import business.Parent;
+import controllers.DataSources;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Singleton;
+import javax.ejb.DependsOn;
+import javax.ejb.Startup;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 
 /**
  *
  * @author moham
  */
-// Data Access Object of parent table
+// DAO ====> Data Access Object of parent table
+
+// IOC ======> INVERTION OF CONTROLE
+@Startup
+@Singleton
+@ApplicationScoped
+@DependsOn("DataSources")
 public class ParentDAO {
-    private Connection conn;
     
-    public ParentDAO(Connection conn){
-        this.conn = conn;
+    @Inject
+    private DataSources ds;
+    
+    public ParentDAO() {
+        
     }
     
+//    public ParentDAO(Connection conn){
+//        this.conn = conn;
+//    }
+    
     public void insert(Parent parent) throws SQLException {
+        Connection conn = ds.getDataSource().getConnection();
         String insert = "INSERT INTO Parent "
                 + "(nom, prenom, email, mdp, telephone, nom_parent_2, prenom_parent_2, email_parent_2, telephone_parent_2)"
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -47,6 +66,7 @@ public class ParentDAO {
     public Parent login(String email, String mdp) {
         String select = "SELECT * FROM Parent WHERE email=? AND mdp=?";
         try {
+            Connection conn = ds.getDataSource().getConnection();
             PreparedStatement pStmt = conn.prepareStatement(select);
             pStmt.setString(1, email);
             pStmt.setString(2, mdp);
