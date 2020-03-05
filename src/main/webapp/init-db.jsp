@@ -16,5 +16,10 @@
         <form method="POST" action="/association-parent/init-db">
             <input type="submit" value="Initialiser" />
         </form>
+        
+        <form method="POST" action="/association-parent/init-db">
+            <input type="text" hidden="true" value="true" name="drop"/>
+            <input type="submit" value="Remplacer" />
+        </form>
     </body>
 </html>

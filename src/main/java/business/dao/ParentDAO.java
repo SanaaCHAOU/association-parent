@@ -24,7 +24,7 @@ import javax.inject.Inject;
  *
  * @author moham
  */
-// Data Access Object of parent table
+// DAO ====> Data Access Object of parent table
 
 // IOC ======> INVERTION OF CONTROLE
 @Startup

@@ -1,0 +1,13 @@
+controllers\DataSources.class
+controllers\InitDatabaseServlet.class
+controllers\ValiderSouscriptionServlet.class
+business\Souscription.class
+controllers\SouscriptionServlet.class
+business\dao\EnfantDAO.class
+controllers\InscriptionAssociationServlet.class
+business\dao\ParentDAO.class
+business\Adhesion.class
+business\Enfant.class
+business\CalculatriceSouscription.class
+business\Parent.class
+controllers\LoginServlet.class

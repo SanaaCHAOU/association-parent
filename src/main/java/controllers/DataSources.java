@@ -24,7 +24,7 @@ import javax.sql.DataSource;
         password = "sanaa",
         url="jdbc:derby://localhost:1527/association") // => DataSource : un objet qui créer plusieurs
          //connexion à la base de données spécifiée et permet la réutilisation de ces connexion
-
+// Annotations
 @Startup // On demande au conteneur (serveur) de créer une instance au démarrage (startup) de l'application de
         // cette classe (DataSouces)
 @Singleton // Singelton c'est une classe dont on utilise qu'une seule instance dan,s tte l'app
@@ -37,10 +37,10 @@ public class DataSources {
     // inversion of control (IOC) => on demande au conteneur (serveur) de chercher la resource (l'objet) qui a le 
         // nom 'java:app/env/jdbc/sanaa' et l'affecter à la propriete derby
     @Resource(lookup = "java:app/env/jdbc/sanaa")
-    DataSource derby;
+    DataSource dataSource;
     
     // getter de derby
     public DataSource getDataSource() {
-        return derby;
+        return dataSource;
     }
 }
